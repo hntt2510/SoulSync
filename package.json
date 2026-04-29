@@ -1,0 +1,36 @@
+{
+  "name": "soulsync-landing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "three": "^0.164.0",
+    "@react-three/fiber": "^9.6.0",
+    "@react-three/drei": "^10.7.0",
+    "framer-motion": "^11.0.3",
+    "lucide-react": "^0.564.0",
+    "tailwindcss": "^4.2.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.164.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^4.3.0",
+    "vite": "^5.4.0",
+    "typescript": "5.7.3",
+    "postcss": "^8.5",
+    "@tailwindcss/postcss": "^4.2.0",
+    "autoprefixer": "^10.4.20"
+  }
+}
