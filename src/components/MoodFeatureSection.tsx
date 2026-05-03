@@ -45,36 +45,41 @@ const slideFromRight: Variants = {
 function GlassCardRim({ children, className = '' }: { children: ReactNode; className?: string }) {
   return (
     <div
-      className={`relative rounded-[40px] p-px shadow-[0_24px_70px_rgba(0,0,0,0.35),0_-8px_32px_-8px_rgba(139,92,246,0.08)] ${className}`}
-      style={{
-        background: `linear-gradient(180deg,
-          rgba(252, 250, 255, 0.28) 0%,
-          rgba(210, 196, 255, 0.12) 12%,
-          rgba(167, 139, 250, 0.07) 30%,
-          rgba(55, 45, 75, 0.22) 58%,
-          rgba(25, 20, 38, 0.55) 85%,
-          rgba(15, 12, 24, 0.72) 100%)`,
-      }}
+      className={`relative rounded-[40px] shadow-[0_24px_70px_rgba(0,0,0,0.35),0_-8px_32px_-8px_rgba(139,92,246,0.08)] ${className}`}
     >
       {children}
-      <div className="pointer-events-none absolute inset-0 z-[2] rounded-[40px]" aria-hidden>
-        <div className="absolute left-[8%] right-[8%] top-0 h-px rounded-full bg-gradient-to-r from-transparent via-white/55 to-transparent shadow-[0_0_22px_rgba(226,214,255,0.6)]" />
-        <div className="absolute bottom-0 left-[10%] right-[10%] h-[0.5px] rounded-full bg-white/[0.045] shadow-none" />
-        <div className="absolute bottom-[6%] left-0 top-[10%] w-px bg-gradient-to-b from-violet-200/42 via-violet-300/12 to-transparent shadow-[-2px_0_14px_rgba(167,139,250,0.35)]" />
-        <div className="absolute bottom-[6%] right-0 top-[10%] w-px bg-gradient-to-b from-violet-200/42 via-violet-300/12 to-transparent shadow-[2px_0_14px_rgba(167,139,250,0.35)]" />
+      <div className="pointer-events-none absolute inset-0 z-[2]" aria-hidden>
+        <div
+          className="absolute inset-0 rounded-[40px] border border-white/45 shadow-[0_0_22px_rgba(167,139,250,0.18)]"
+          style={{
+            WebkitMaskImage:
+              'linear-gradient(to bottom, #000 0%, #000 70%, rgba(0,0,0,0.22) 100%)',
+            maskImage:
+              'linear-gradient(to bottom, #000 0%, #000 70%, rgba(0,0,0,0.22) 100%)',
+          }}
+        />
+        <div className="absolute left-[8%] right-[8%] top-0 h-px rounded-full bg-gradient-to-r from-transparent via-white/70 to-transparent shadow-[0_0_22px_rgba(226,214,255,0.6)]" />
       </div>
     </div>
   )
 }
 
-function MoodIconBubble({ src, index }: { src: string; index: number }) {
+function MoodIconBubble({
+  src,
+  index,
+  className = '',
+}: {
+  src: string
+  index: number
+  className?: string
+}) {
   const [hovered, setHovered] = useState(false)
   const floatDuration = 3.8 + index * 0.35
   const floatDelay = index * 0.22
 
   return (
     <motion.div
-      className="relative flex justify-center"
+      className={`relative flex justify-center ${className}`}
       animate={{ y: [0, -7, 0, -4, 0] }}
       transition={{
         duration: floatDuration,
@@ -192,15 +197,25 @@ export default function MoodFeatureSection() {
         </motion.div>
 
         <motion.div
-          className="mb-20 flex flex-wrap items-center justify-center gap-8 md:mb-24 md:gap-12 lg:gap-16"
+          className="mb-20 flex flex-nowrap items-center justify-center gap-5 sm:gap-7 md:mb-24 md:gap-10 lg:gap-14 xl:gap-16"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
           transition={{ duration: 0.75, ease: 'easeOut', delay: 0.05 }}
         >
-          {MOOD_ICONS.map((src, i) => (
-            <MoodIconBubble key={src} src={src} index={i} />
-          ))}
+          {MOOD_ICONS.map((src, i) => {
+            // luôn 1 hàng — mobile 3, md thêm icon 4, lg trở lên đủ 5
+            const responsiveVis =
+              i === 3 ? 'hidden md:flex' : i === 4 ? 'hidden lg:flex' : ''
+            return (
+              <MoodIconBubble
+                key={src}
+                src={src}
+                index={i}
+                className={responsiveVis}
+              />
+            )
+          })}
         </motion.div>
 
         <GlassCardRim>

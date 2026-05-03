@@ -12,7 +12,7 @@ export default function Header() {
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 border-b border-white/10 bg-[#050508]/75 backdrop-blur-xl">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:max-w-[88rem] lg:px-10 xl:max-w-[96rem] xl:px-14 2xl:max-w-[110rem] 2xl:px-20">
         <a href="#" className="flex items-center gap-2">
           <img src="/logo.png" alt="SoulSync" className="h-8 w-auto" width={140} height={32} />
         </a>

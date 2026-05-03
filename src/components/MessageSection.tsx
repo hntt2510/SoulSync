@@ -31,26 +31,9 @@ export default function MessageSection() {
   return (
     <section
       id="message"
-      className="relative overflow-hidden px-4 py-20 md:py-28 lg:py-32"
+      className="relative isolate overflow-hidden bg-[#0B0121] px-4 py-20 md:py-28 lg:py-32"
       aria-labelledby="message-heading"
     >
-      <div className="pointer-events-none absolute inset-0 -z-20 overflow-hidden bg-[#0B0121]">
-        <img
-          src="/dark1.png"
-          alt=""
-          className="h-full w-full scale-[1.08] object-cover opacity-[0.62] blur-[40px] md:blur-[52px]"
-          aria-hidden
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0B0121]/45 via-[#0B0121]/20 to-[#0B0121]/70" />
-        <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_38%,rgba(139,92,246,0.14)_0%,transparent_55%)]"
-          aria-hidden
-        />
-        <div
-          className="absolute inset-0 bg-[radial-gradient(ellipse_95%_80%_at_50%_50%,transparent_35%,#0B0121_92%)]"
-          aria-hidden
-        />
-      </div>
 
       <div className="relative z-[1] mx-auto max-w-7xl">
         <motion.div
@@ -74,19 +57,8 @@ export default function MessageSection() {
           transition={{ duration: 0.85, ease: [0.22, 1, 0.36, 1] }}
           className="relative z-[1]"
         >
-          <div
-            className="relative z-[1] rounded-[40px] p-[1px] shadow-[0_40px_100px_rgba(0,0,0,0.45),0_-18px_48px_-14px_rgba(139,92,246,0.2)]"
-            style={{
-              background: `linear-gradient(180deg,
-                rgba(252, 250, 255, 0.52) 0%,
-                rgba(210, 196, 255, 0.28) 9%,
-                rgba(167, 139, 250, 0.16) 26%,
-                rgba(88, 70, 118, 0.32) 52%,
-                rgba(40, 34, 54, 0.55) 80%,
-                rgba(22, 18, 30, 0.75) 100%)`,
-            }}
-          >
-            <div className="relative z-[1] rounded-[39px] bg-[#0B0121]/18 px-6 py-12 backdrop-blur-[12px] md:px-14 md:py-16 lg:px-16 lg:py-[4.25rem]">
+          <div className="relative z-[1] rounded-[40px] shadow-[0_40px_100px_rgba(0,0,0,0.45),0_-18px_48px_-14px_rgba(139,92,246,0.2)]">
+            <div className="relative z-[1] rounded-[40px] bg-[#0B0121]/18 px-6 py-12 backdrop-blur-[12px] md:px-14 md:py-16 lg:px-16 lg:py-[4.25rem]">
               <motion.div
                 variants={cardBodyVariants}
                 initial="hidden"
@@ -115,11 +87,17 @@ export default function MessageSection() {
               </motion.div>
             </div>
 
-            <div className="pointer-events-none absolute inset-0 z-[2] rounded-[40px]" aria-hidden>
-              <div className="absolute left-[8%] right-[8%] top-0 h-px rounded-full bg-gradient-to-r from-transparent via-white/65 to-transparent shadow-[0_0_28px_rgba(226,214,255,0.82)]" />
-              <div className="absolute bottom-0 left-[10%] right-[10%] h-[0.5px] rounded-full bg-white/[0.065]" />
-              <div className="absolute bottom-[6%] left-0 top-[10%] w-px bg-gradient-to-b from-violet-200/6 via-violet-300/20 to-transparent shadow-[-4px_0_22px_rgba(167,139,250,0.5)]" />
-              <div className="absolute bottom-[6%] right-0 top-[10%] w-px bg-gradient-to-b from-violet-200/6 via-violet-300/20 to-transparent shadow-[4px_0_22px_rgba(167,139,250,0.5)]" />
+            <div className="pointer-events-none absolute inset-0 z-[2]" aria-hidden>
+              <div
+                className="absolute inset-0 rounded-[40px] border border-white/45 shadow-[0_0_22px_rgba(167,139,250,0.22)]"
+                style={{
+                  WebkitMaskImage:
+                    'linear-gradient(to bottom, #000 0%, #000 70%, rgba(0,0,0,0.22) 100%)',
+                  maskImage:
+                    'linear-gradient(to bottom, #000 0%, #000 70%, rgba(0,0,0,0.22) 100%)',
+                }}
+              />
+              <div className="absolute left-[8%] right-[8%] top-0 h-px rounded-full bg-gradient-to-r from-transparent via-white/75 to-transparent shadow-[0_0_28px_rgba(226,214,255,0.82)]" />
             </div>
           </div>
         </motion.div>
