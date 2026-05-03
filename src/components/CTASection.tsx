@@ -1,4 +1,8 @@
+import { lazy, Suspense } from 'react'
 import { motion, type Variants } from 'framer-motion'
+import MagneticButton from './MagneticButton'
+
+const AuroraBackdrop = lazy(() => import('./AuroraBackdrop'))
 
 const containerVariants: Variants = {
   hidden: {},
@@ -43,6 +47,9 @@ export default function CTASection() {
       aria-labelledby="cta-heading"
     >
       <div className="pointer-events-none absolute inset-0 z-0" aria-hidden>
+        <Suspense fallback={null}>
+          <AuroraBackdrop className="opacity-80" />
+        </Suspense>
         <div className="absolute left-1/2 top-[-15%] h-[420px] w-[640px] -translate-x-1/2 rounded-full bg-violet-700/12 blur-[140px]" />
         <div className="absolute bottom-[-20%] left-1/2 h-[360px] w-[520px] -translate-x-1/2 rounded-full bg-fuchsia-700/10 blur-[140px]" />
       </div>
@@ -83,13 +90,14 @@ export default function CTASection() {
             </motion.p>
 
             <motion.div variants={fadeUp} className="mt-10 flex justify-center md:mt-12">
-              <a
+              <MagneticButton
                 href="#"
+                strength={18}
                 className="group/btn relative inline-flex min-h-[52px] items-center justify-center overflow-hidden rounded-full border border-white/30 bg-white/[0.04] px-9 text-sm font-medium text-white backdrop-blur-sm transition duration-300 hover:border-white/55 hover:bg-white/[0.08] hover:shadow-[0_0_28px_rgba(196,181,253,0.35)] md:min-h-[56px] md:px-11 md:text-base"
               >
                 <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition duration-700 group-hover/btn:translate-x-full" />
                 <span className="relative">Khám phá SoulSync ngay</span>
-              </a>
+              </MagneticButton>
             </motion.div>
           </motion.div>
         </motion.div>

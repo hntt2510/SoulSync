@@ -1,5 +1,9 @@
+import { lazy, Suspense } from 'react'
 import { motion, type Variants } from 'framer-motion'
 import { Wind, Moon } from 'lucide-react'
+import TiltCard from './TiltCard'
+
+const AmbientParticles = lazy(() => import('./AmbientParticles'))
 
 const PHONES_SRC = encodeURI('/meditation-phones.png')
 
@@ -79,6 +83,15 @@ export default function LifebuoySection() {
         <div className="absolute left-1/2 top-[-10%] h-[420px] w-[640px] -translate-x-1/2 rounded-full bg-violet-700/15 blur-[140px]" />
         <div className="absolute bottom-[-15%] right-[-10%] h-[480px] w-[480px] rounded-full bg-fuchsia-700/10 blur-[150px]" />
         <div className="absolute bottom-[-10%] left-[-12%] h-[420px] w-[420px] rounded-full bg-indigo-700/10 blur-[140px]" />
+        <Suspense fallback={null}>
+          <AmbientParticles
+            count={180}
+            color="#d8b4fe"
+            opacity={0.35}
+            spread={9}
+            className="opacity-80"
+          />
+        </Suspense>
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl xl:max-w-[88rem] 2xl:max-w-[100rem]">
@@ -114,26 +127,35 @@ export default function LifebuoySection() {
           variants={containerVariants}
         >
           {cards.map(({ icon: Icon, iconWrap, title, description }) => (
-            <motion.article
-              key={title}
-              variants={fadeUp}
-              className={CARD_CLASS}
-            >
-              <CardHighlightRim />
-              <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-violet-500/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
-              <div className={`relative z-[3] mb-6 inline-flex rounded-2xl p-3 ${iconWrap}`}>
-                <Icon className="h-6 w-6" aria-hidden />
-              </div>
-              <h3 className="relative z-[3] mb-3 text-2xl font-semibold tracking-tight text-white md:text-[1.75rem]">
-                {title}
-              </h3>
-              <p className="relative z-[3] mb-8 text-pretty text-sm leading-relaxed text-white/60 md:text-base md:leading-[1.75]">
-                {description}
-              </p>
-              <a href="#download" className={`relative z-[3] ${LEARN_MORE_CLASS}`}>
-                Tìm hiểu thêm
-              </a>
-            </motion.article>
+            <motion.div key={title} variants={fadeUp}>
+              <TiltCard max={6} className="rounded-[28px]">
+                <article className={CARD_CLASS}>
+                  <CardHighlightRim />
+                  <div className="pointer-events-none absolute -right-12 -top-12 h-40 w-40 rounded-full bg-violet-500/10 opacity-0 blur-2xl transition duration-500 group-hover:opacity-100" />
+                  <div
+                    className={`relative z-[3] mb-6 inline-flex rounded-2xl p-3 ${iconWrap}`}
+                    style={{ transform: 'translateZ(40px)' }}
+                  >
+                    <Icon className="h-6 w-6" aria-hidden />
+                  </div>
+                  <h3
+                    className="relative z-[3] mb-3 text-2xl font-semibold tracking-tight text-white md:text-[1.75rem]"
+                    style={{ transform: 'translateZ(28px)' }}
+                  >
+                    {title}
+                  </h3>
+                  <p
+                    className="relative z-[3] mb-8 text-pretty text-sm leading-relaxed text-white/60 md:text-base md:leading-[1.75]"
+                    style={{ transform: 'translateZ(18px)' }}
+                  >
+                    {description}
+                  </p>
+                  <a href="#download" className={`relative z-[3] ${LEARN_MORE_CLASS}`}>
+                    Tìm hiểu thêm
+                  </a>
+                </article>
+              </TiltCard>
+            </motion.div>
           ))}
         </motion.div>
 

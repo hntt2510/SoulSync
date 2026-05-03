@@ -1,10 +1,12 @@
-import { useRef, useState, type ReactNode } from 'react'
+import { lazy, Suspense, useRef, useState, type ReactNode } from 'react'
 import {
   motion,
   useScroll,
   useTransform,
   type Variants,
 } from 'framer-motion'
+
+const AmbientParticles = lazy(() => import('./AmbientParticles'))
 
 const ASSET_LEFT = encodeURI('/Asset29@2x 2.png')
 const ASSET_RIGHT = encodeURI('/Asset25@2x 2.png')
@@ -152,6 +154,15 @@ export default function MoodFeatureSection() {
       <div className="pointer-events-none absolute inset-0 z-[1] overflow-hidden" aria-hidden>
         <div className="absolute left-1/4 top-32 h-72 w-72 rounded-full bg-violet-600/8 blur-[100px] md:top-40" />
         <div className="absolute bottom-1/3 right-0 h-80 w-80 rounded-full bg-fuchsia-600/7 blur-[110px]" />
+        <Suspense fallback={null}>
+          <AmbientParticles
+            count={160}
+            color="#a78bfa"
+            opacity={0.32}
+            spread={9}
+            speed={0.04}
+          />
+        </Suspense>
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
