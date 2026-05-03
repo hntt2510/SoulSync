@@ -6,7 +6,7 @@ import MagneticButton from './MagneticButton'
 
 const HeroBackdrop = lazy(() => import('./HeroBackdrop'))
 
-const MOCKUP_SRC = encodeURI('/Asset14@2x 1.png')
+const MOCKUP_SRC = encodeURI('/display-frame1.png')
 
 const PRIMARY_BTN =
   'inline-flex min-h-[48px] w-full min-w-[200px] items-center justify-center rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-8 py-3.5 text-sm font-semibold text-white shadow-lg shadow-violet-500/30 transition hover:opacity-95 sm:w-auto xl:min-h-[56px] xl:px-10 xl:text-base'

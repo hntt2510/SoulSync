@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 
 const MESSAGE_STYLE =
-  'pointer-events-none max-w-[200px] rounded-2xl border border-white/18 bg-white/[0.12] px-3.5 py-2.5 text-left text-xs text-white/92 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-md sm:max-w-[220px] sm:px-4 sm:text-sm xl:max-w-[260px] xl:px-5 xl:py-3 xl:text-base 2xl:max-w-[300px] 2xl:text-lg'
+  'pointer-events-none max-w-[200px] rounded-2xl border border-white/35 bg-[#1a0b38]/85 px-3.5 py-2.5 text-left text-xs font-medium text-white shadow-[0_10px_32px_rgba(0,0,0,0.6)] backdrop-blur-xl ring-1 ring-violet-400/20 sm:max-w-[220px] sm:px-4 sm:text-sm xl:max-w-[260px] xl:px-5 xl:py-3 xl:text-base 2xl:max-w-[300px] 2xl:text-lg'
 
 const items: { text: string; className: string; delay: number; duration: number }[] = [
   {
